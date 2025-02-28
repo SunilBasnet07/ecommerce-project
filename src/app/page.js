@@ -9,8 +9,7 @@ import config from "@/config/config";
 
 
 export default function Home() {
-  const appName = config.apiUrl;
-  console.log(appName);
+ 
   return (
     <section className='dark:bg-gray-800'>
 
