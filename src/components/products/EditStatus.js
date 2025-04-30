@@ -48,12 +48,13 @@ const EditStatus = ({ order,setIsStatusUpdated }) => {
             <Modal
                 title="Edit Order Status"
                 showModal={showEditPopup}
-                setShowModal={setShowEditPopup}>
+                setShowModal={setShowEditPopup}
+                className={"px-5 py-5 min-h-40 w-[35%] "}>
 
                 <form className='flex flex-col gap-12 mt-3' onSubmit={handleSubmit(submitForm)}>
                     <div className='flex flex-col justify-start gap-2'>
                         <label htmlFor='status' className='text-lg text-left font-Nunito-Semibold'>Status</label>
-                        <select id='status'  {...register("status")} className='border px-2 py-2 rounded-md'>
+                        <select id='status'  {...register("status")} className='border px-2 py-2 dark:text-black dark:bg-gray-400 rounded-md'>
                             <option  >Select Status </option>
                             {
                                 orderStatus.map((order, index) => (

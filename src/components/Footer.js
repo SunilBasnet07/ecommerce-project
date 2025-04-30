@@ -12,7 +12,7 @@ import visa from "@/assests/visa.png"
 
 const Footer = () => {
   return (
-    <div className="bg-blue-100 text-white py-12 dark:bg-gray-900 font-Nunito-SemiBold">
+    <div className="bg-blue-100 dark:text-white text-black py-12  dark:bg-gray-900 font-Nunito-SemiBold">
       <div className="container mx-auto px-6">
         {/* Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

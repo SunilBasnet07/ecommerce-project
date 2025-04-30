@@ -3,7 +3,7 @@ import Category from "@/components/Design/Category";
 import Features from "@/components/Design/Features";
 import HeroSection from "@/components/Design/Hero";
 import Footer from "@/components/Footer";
-import config from "@/config/config";
+
 
 
 

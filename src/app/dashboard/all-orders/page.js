@@ -1,7 +1,7 @@
 'use client'
 
 import AllOrderTable from "@/components/products/Table";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import { useSelector } from "react-redux"
 
 const AllOrders = () => {

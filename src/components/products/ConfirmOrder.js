@@ -50,7 +50,8 @@ const ConfirmOrder = ({ order, status }) => {
       <Modal
         title="Confirm Product"
         showModal={showConfirmModal}
-        setShowModal={setShowConfirmModal}>
+        setShowModal={setShowConfirmModal}
+        className={"px-5 py-5 min-h-40 w-[35%] "}>
         {loading ? <div className='flex justify-center items-center py-5'><Spinner edit={"h-[70px] w-[70px]"} /></div> : <>
           <div className='flex flex-col gap-7'>
             <p className='font-Nunito-Bold mt-3'>Do you want to sure Confirm this product?</p>

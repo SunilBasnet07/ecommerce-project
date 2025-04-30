@@ -21,6 +21,7 @@ async function ProductList({ searchParams }) {
   const products = await getAllProduct(await searchParams);
   const categories = await getAllCategories();
   const brands = await getAllBrands();
+   
 
 
 

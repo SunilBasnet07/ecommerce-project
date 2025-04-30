@@ -58,7 +58,8 @@ const ProductFilter = () => {
                     <ListRestart className='h-6 w-6' />
                 </button>
             </div>
-            <Modal title="Product Filter" showModal={showFilterModal} setShowModal={setShowFilterModal}>
+            <Modal title="Product Filter" showModal={showFilterModal} setShowModal={setShowFilterModal}
+            className={"px-10 py-5 min-h-40 w-[45%] "}>
                 <div className='flex flex-col justify-center gap-5 py-4'>
                     <div className='flex gap-8 items-center'>
                         <label htmlFor='sort' className='text-nowrap font-Nunito-Bold'>Sort :</label>

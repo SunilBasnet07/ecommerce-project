@@ -43,19 +43,29 @@ const CartPage = () => {
                         <th className='font-Nunito-Bold p-3 text-md'>Quantity</th>
                         <th className='font-Nunito-Bold p-3 text-md'>Total</th>
                         <th className='font-Nunito-Bold p-3 text-md text-center'><Cog /></th>
+                      
                     </tr>
+              
+                
+                    
                 </thead>
+
+         
+              
                 <tbody>
+                   
+                   
                     {
                         product.map((item, index) => (
-                            <tr key={index} className='border-b dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700'>
+                            <tr key={index} className='border-b dark:text-white  hover:bg-gray-100 dark:hover:bg-gray-700'>
+                               
                                 <td className='font-Nunito-SemiBold p-3'>{index + 1}</td>
                                 <td className='font-Nunito-SemiBold flex items-center gap-2 p-3'>
                                     <Image src={item.imageUrls?.length > 0 ? item.imageUrls[0] : placeholder} alt='cartImg' height={40} width={40} />
                                     {item.name}
                                 </td>
                                 <td className='font-Nunito-SemiBold p-3'>${item.price}</td>
-                                <td className='font-Nunito-SemiBold text-center p-3 flex gap-2 items-center'>
+                                <td className='font-Nunito-SemiBold   flex gap-2 justify-center '>
                                     <button onClick={() => dispatch(decreaseQuantity(item))} disabled={item.quantity <= 1} className='text-sm disabled:text-gray-500 hover:text-red-600'><CircleMinus className='h-4 w-4' /></button>
                                     <span>{item.quantity}</span>
                                     <button onClick={() => dispatch(increaseQuantity(item))} disabled={item.quantity > 5} className='text-sm disabled:text-gray-500 hover:text-green-600'><CirclePlus className='h-4 w-4' /></button>
@@ -67,8 +77,11 @@ const CartPage = () => {
                             </tr>
                         ))
                     }
-                    <tr className='mt-5'>
-                        <td colSpan={6} ></td>
+                    <tr className=' w-full text-center text-sm'>
+                        {
+                            product.length==0 && ( <td colSpan={6} >Empty cart</td>)
+                        }
+                       
                     </tr>
                     <tr className='mt-5 dark:text-white'>
                         <td className="p-3 font-Nunito-Bold text-sm" colSpan={4}></td>

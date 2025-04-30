@@ -49,7 +49,7 @@ const OrderPages = () => {
 
   return (
     <section>
-      <div className='mt-5 px-3 w-full h-auto py-5 flex flex-col items-center gap-5 dark:bg-gray-800'>
+      <div className='mt-5 px-3 w-full  py-5 flex flex-col items-center gap-5 dark:bg-gray-800'>
         <div>
           <p className='font-Nunito-ExtraBold text-2xl dark:text-white'>Your Order {getOrder.length}</p>
         </div>

@@ -44,7 +44,8 @@ const Checkout = () => {
             <Modal
                 title="Checkout Product"
                 showModal={checkoutModal}
-                setShowModal={setCheckoutModal}>
+                setShowModal={setCheckoutModal}
+                className={"px-5 py-5 min-h-40 w-[35%] "}>
                 <div className='flex flex-col gap-7'>
                     <p className='font-Nunito-Bold mt-3'>Do you want to sure checkout this product?</p>
                     <div className='flex justify-between items-center'>

@@ -17,7 +17,7 @@ const ProductId = async ({ params }) => {
   return (
     <>
 
-      <div className=" h-auto bg-gray-100  text-black dark:text-white dark:bg-gray-800 p-6">
+      <div className=" h-auto bg-gray-100  text-black dark:text-white dark:bg-gray-800 mt-4 p-6">
 
         <Title label="Product Details" />
 
@@ -40,7 +40,7 @@ const ProductId = async ({ params }) => {
               <ImageViewer product={product}/>
 
               <span className="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
-                -25%
+                -10%
               </span>
             </div>
 

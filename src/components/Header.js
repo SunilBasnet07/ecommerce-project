@@ -20,7 +20,8 @@ import { login } from "@/redux/auth/authAction"
 import { Eye, EyeOff } from "lucide-react";
 import { REGISTER_ROUTE } from "@/constance/routes";
 import SearchByName from "./products/SearchByName"
-import logo from "@/assests/logo.png"
+// import logo from "@/assests/logo.png"
+import logo from "@/assests/cart.png"
 
 const Header = () => {
     const { user, loading,error } = useSelector((state) => state.auth);
@@ -75,10 +76,11 @@ const Header = () => {
         <header className="shadow-lg fixed top-0 w-full z-10 ">
             <div className="antialiased bg-gray-100  ">
                 <div className="w-full text-gray-700 bg-white  dark:text-gray-200 dark:bg-gray-800">
-                    <div className="flex flex-col gap-3 max-w-screen-xl px-2 py-1 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8 dark:bg-gray-800">
+                    <div className="flex flex-col gap-3 max-w-screen-xl  py-1 md:items-center md:justify-between md:flex-row md:px-6 lg:px-8 dark:bg-gray-800">
                         <div className="flex flex-row w-[300px] items-center justify-between p-4">
-                            <Link href={HOME_PAGE} className="text-lg w-auto font-Nunito-ExtraBold tracking-widest text-primary-500 uppercase rounded-lg dark:text-white focus:outline-none  focus:shadow-outline">
-                                <Image src={logo} alt="logo" height={100} width={100} />
+                            <Link href={HOME_PAGE} className="text-lg  flex gap-1 justify-center items-center w-auto font-Nunito-ExtraBold tracking-widest text-primary-500 uppercase rounded-lg dark:text-white focus:outline-none  focus:shadow-outline">
+                                <Image src={logo} alt="logo" height={50} width={50} />
+                                <p className="text-sm text-primary-500 ">Shope <span>Me</span></p>
                             </Link>
 
                             <button onClick={() => setShowMobileMenu(true)} className="rounded-lg sm:hidden focus:outline-none focus:shadow-outline">
@@ -89,7 +91,7 @@ const Header = () => {
                             </button>
 
                         </div>
-                        <div className="w-full hidden md:block">
+                        <div className="w-full hidden md:block ml-3">
                             <SearchByName />
                         </div>
 
@@ -103,7 +105,7 @@ const Header = () => {
                                 ))
                             }
 
-                            <div className="flex justify-center items-center gap-4 mx-2">
+                            <div className="flex justify-center items-center gap-7 mx-2">
                                 {/* <span className="relative -top-4 left-11 text-sm flex justify-center items-center h-5 w-5 bg-red-500 rounded-full text-white">1</span> */}
                                 <Link href="/dashboard/cart">  <ShoppingCart className="h-5 w-5 relative" />
                                     <span className={`${product?.length ? "absolute top-[0.20rem] text-sm text-center h-5 w-5 bg-red-500 rounded-full  text-white" : "hidden"}`}>{product?.length}</span>
@@ -113,10 +115,10 @@ const Header = () => {
 
                             </div>
 
-                            <div className="flex justify-center items-center ml-5 ">
+                            <div className="flex justify-center items-center ml-7 ">
                                 {
-                                    user ? <button onClick={() => setShowProfile(!showProfile)} className="rounded-full h-8 w-8 flex relative justify-center items-center bg-primary-100">{user.profileImageUrl ? <Image src={user.profileImageUrl} width={32} height={32} alt="image" className="rounded-full  " /> : <UserRound className="text-white" />}</button>
-                                        : <button onClick={() => setLoginPopup(true)} className=" py-2 mt-2 text-sm font-Nunito-SemiBold bg-transparent rounded-lg dark:bg-transparent dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" >Login</button>
+                                    user ? <button onClick={() => setShowProfile(!showProfile)} className="rounded-full h-8 w-8 flex relative ml-2 justify-center items-center bg-primary-100">{user.profileImageUrl ? <Image src={user.profileImageUrl} width={32} height={32} alt="image" className="rounded-full  " /> : <UserRound className="text-white" />}</button>
+                                        : <button onClick={() => setLoginPopup(true)} className=" py-2 mt-2 text-sm font-Nunito-SemiBold bg-transparent px-3 rounded-lg dark:bg-transparent dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" >Login</button>
                                 }
 
                                 <div onClick={() => setShowProfile(false)} className={`${showProfile ? "absolute dark:bg-gray-900 border -bottom-44 right-3 flex flex-col   min-w-[300px] h-auto  rounded-md bg-white" : "hidden"}`}>

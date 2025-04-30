@@ -34,12 +34,12 @@ const OrderPayment = ({ params, searchParams }) => {
   }, [])
 
   return (
-    <div className='mt-5 px-3 w-full  py-5 flex flex-col items-center gap-2 dark:bg-gray-800'>
+    <div className='mt-5 px-3 w-full  py-8 flex flex-col items-center gap-2 dark:bg-gray-800'>
       {
         loading ? (<div className='w-full h-52 rounded-lg border flex dark:bg-gray-900 justify-center flex-col items-center gap-10 py-3 bg-slate-100'>
           <p className='font-Nunito-ExtraBold text-2xl dark:text-white'>Payment Verifying</p>
           <div><Spinner edit={"h-[70px] w-[70px]"} /></div>
-        </div>) : error ? (<div className='w-full h-52 rounded-lg border flex justify-center flex-col items-center gap-2   py-3 bg-slate-50'>
+        </div>) : error ? (<div className='w-full h-52 rounded-lg border flex justify-center flex-col items-center gap-2 dark:bg-gray-700  py-3 bg-slate-50'>
           <Image src={errorIcon} alt='errorimage' height={100} width={100} />
           <p className='font-Nunito-ExtraBold text-2xl  dark:text-white'>Your Payment Failed</p>
           <p className='font-Nunito-SemiBold text-sm dark:text-white'>Please try again</p>

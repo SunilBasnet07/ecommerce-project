@@ -15,6 +15,8 @@ const EditProfile = () => {
     const [localImageUrl, setLocalImageUrl] = useState(null);
     const [imageProfile, setImageProfile] = useState(null);
     const [loading, setLoading] = useState(null);
+    const [uploading, setUploading] = useState(null);
+
     const router = useRouter();
     const { user } = useSelector((state) => state.auth);
     const dispatch = useDispatch()
@@ -33,7 +35,7 @@ const EditProfile = () => {
 
 
     async function submitForm(data) {
-      
+
 
         setLoading(true);
         try {
@@ -52,7 +54,7 @@ const EditProfile = () => {
             dispatch(updateStateUser(userData));
             toast.success("User uploaded successfully.", {
                 autoClose: 1500,
-                onClose: router.replace(PRODUCT_PAGE)
+                // onClose: router.replace(PRODUCT_PAGE)
             })
         } catch (error) {
             toast.error(error.response.data, {
@@ -70,6 +72,7 @@ const EditProfile = () => {
         const formData = new FormData();
         formData.append("image", imageProfile);
 
+        setUploading(true);
 
         try {
             await uploadProfileImage(user.id, formData);
@@ -77,24 +80,59 @@ const EditProfile = () => {
             dispatch(updateStateUser(userData));
             toast.success("Profile image uploaded successfully.", {
                 autoClose: 1500,
-                onClose: router.replace(PRODUCT_PAGE)
+                // onClose: router.replace(PRODUCT_PAGE)
             })
         } catch (error) {
             toast.error(error.response.data, {
                 autoClose: 1500,
             })
+        } finally {
+            setUploading(false);
         }
     }
-  
+
+
 
     return (
 
-        <section className='flex flex-col  justify-center gap-24 gap-y-9 w-full px-10 py-4 h-full'>
-            <div className='flex justify-evenly items-center'>
+        <section className='flex flex-col items-center justify-center gap-32 gap-y-9 w-full px-10 py-4 h-full'>
+            {/* <div className='flex justify-evenly items-center'>
                 {user?.profileImageUrl ? <Image src={user?.profileImageUrl} alt='profile-img' height={150} width={150} className='rounded-full border-4 border-slate-300 mr-60 hover:shadow-2xl' />
                     : <UserRound className="text-white h-32 w-32 rounded-full border-2 mr-60 hover:shadow-2xl" />
                 }
-            </div>
+            </div> */}
+
+            <form onSubmit={uploadImage} className='py-3'>
+                <div className='flex  w-full flex-col gap-5'>
+                    <div className='w-full flex flex-col gap-5  items-center '>
+                        {/* <label htmlFor='image'>Edit Profile</label> */}
+                        {/* {localImageUrl && (<Image src={localImageUrl} width={100} height={100} alt='image' />
+                        )} */}
+                        <div className='flex justify-center items-center '>
+                            {localImageUrl ? (<Image src={localImageUrl} alt='profile-img' height={150} width={150} className='rounded-full border-4  border-slate-300  hover:shadow-2xl' />)
+                                : (<Image src={user?.profileImageUrl} alt='profile-img' height={150} width={150} className='rounded-full border-4 border-slate-300  hover:shadow-2xl' />)
+                                || (<UserRound className="text-white h-32 w-32 rounded-full border-2 mr-60 hover:shadow-2xl" />)
+                            }
+                        </div>
+                        <div className='flex flex-col gap-4  justify-center items-start'>
+                            <input type='file' id="image" className='font-Nunito-Bold w-full dark:text-white' onChange={(e) => {
+                                const files = [];
+                                const Urls = [];
+                                Array.from(e.target?.files).map((file) => {
+                                    files.push(file)
+                                    Urls.push(URL.createObjectURL(file))
+                                })
+                                setImageProfile(files[0])
+                                setLocalImageUrl(Urls[0]);
+                            }} />
+                            <button disabled={uploading} type="submit" className='px-2 py-1 w-full disabled:cursor-not-allowed disabled:bg-slate-400 flex justify-center items-center gap-2 w-[30%] font-Nunito-Bold rounded-sm bg-primary-500 hover:bg-primary-600 text-white'><span>Uploade</span> {uploading && (<Spinner edit={"h-[24px] w-[24px]"} />)}</button>
+                        </div>
+                    </div>
+
+                    
+
+                </div>
+            </form>
             <form onSubmit={handleSubmit(submitForm)} className='flex py-3 justify-center w-[80%] flex-col gap-5' >
                 <div className='grid grid-cols-2 gap-4 items-center justify-center '>
                     <div>
@@ -177,35 +215,13 @@ const EditProfile = () => {
 
                 </div>
 
-                <button type="submit" value='update' className="px-2 cursor-pointer disabled:cursor-not-allowed disabled:bg-slate-300 py-1 w-[30%] font-Nunito-Bold rounded-sm bg-primary-500 hover:bg-primary-600 text-white flex justify-center items-center gap-2">update {loading && (<Spinner edit={"h-[24px] w-[24px]"} />)}</button>
+                <button disabled={loading} type="submit" value='update' className="px-2 cursor-pointer disabled:cursor-not-allowed  disabled:bg-slate-400 py-1 w-[30%] font-Nunito-Bold rounded-sm bg-primary-500 hover:bg-primary-600 text-white flex justify-center items-center gap-2"> <span>update</span> {loading && (<Spinner edit={"h-[24px] w-[24px]"} />)}</button>
 
 
             </form>
 
 
 
-            <form onSubmit={uploadImage} className='py-3'>
-                <div className='flex  w-full flex-col gap-5'>
-                    <div className='w-full'>
-                        {/* <label htmlFor='image'>Edit Profile</label> */}
-                        {localImageUrl && (<Image src={localImageUrl} width={100} height={100} alt='image' />
-                        )}
-                        <input type='file' id="image" className='font-Nunito-Bold w-full dark:text-white' onChange={(e) => {
-                            const files = [];
-                            const Urls = [];
-                            Array.from(e.target?.files).map((file) => {
-                                files.push(file)
-                                Urls.push(URL.createObjectURL(file))
-                            })
-                            setImageProfile(files[0])
-                            setLocalImageUrl(Urls[0]);
-                        }} />
-                    </div>
-
-                    <button  type="submit" className='px-2 py-1 disabled:cursor-not-allowed disabled:bg-slate-300  w-[30%] font-Nunito-Bold rounded-sm bg-primary-500 hover:bg-primary-600 text-white'>Uploade {loading && (<Spinner edit={"h-[24px] w-[24px]"} />)}</button>
-
-                </div>
-            </form>
             <ToastContainer />
         </section>
 
